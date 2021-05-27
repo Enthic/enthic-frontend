@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const apiClient = axios.create({
-  baseURL: "https://api.enthic.fr",
+  baseURL: "http://test.enthic.fr:5432",
   withCredentials: false,
   headers: {
     Accept: "application/json",
