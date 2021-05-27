@@ -19,15 +19,12 @@ function recursiveFillTree(treeToFill, rawData) {
   }
 
   // Find corresponding value from rawData
-  for (var i = 0; i < rawData.length; i++) {
-    for (var property in rawData[i]) {
-      if (treeToFill.codeLiasses.indexOf(property) > -1) {
-        treeToFill.data = rawData[i][property];
-        treeToFill.data.status = "official";
-        treeToFill.data.code = property;
-        rawData.splice(i, 1); // Remove used data from rawData
-        break;
-      }
+  for (var property in rawData) {
+    if (treeToFill.codeLiasses.indexOf(property) > -1) {
+      treeToFill.data = rawData[property];
+      treeToFill.data.status = "official";
+      treeToFill.data.code = property;
+      delete rawData[property]; // Remove used data from rawData
     }
   }
 }

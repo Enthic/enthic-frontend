@@ -2,24 +2,23 @@ const getYearData = (companyData) => {
   var formatter = new Intl.NumberFormat(undefined, {
     minimumFractionDigits: 0,
   });
-  const yearData = [];
+  const result = [];
 
-  for (let declaration of companyData.declarations) {
+  for (let year in companyData.declarations) {
     let yearDataItem = {
-      year: declaration.declaration.value,
+      year: year,
       data: {},
     };
-    for (var yearProp in declaration.financial_data_refined) {
+    let yearData = companyData.declarations[year];
+    for (var yearProp in yearData.financial_data) {
       yearDataItem.data[yearProp] = {
-        description: declaration.financial_data_refined[yearProp].description,
-        value: formatter.format(
-          declaration.financial_data_refined[yearProp].value
-        ),
+        description: yearData.financial_data[yearProp].description,
+        value: formatter.format(yearData.financial_data[yearProp].value),
       };
     }
-    yearData.push(yearDataItem);
+    result.push(yearDataItem);
   }
-  return yearData;
+  return result;
 };
 
 export { getYearData };

@@ -1,5 +1,4 @@
 import { calculateComptesDeResultats } from "./comptesDeResultats";
-import { enhanceDeclaration } from "./financialDataRefined";
 import { getFlatData } from "./flatData";
 import { getYearData } from "./yearData";
 import { getLastEffectifFromYearData } from "./lastEffectif";
@@ -16,7 +15,6 @@ const addAccountingCalculations = (companyData) => {
   const comptesDeResultats = calculateComptesDeResultats(
     companyData.declarations
   );
-  companyData.declarations = enhanceDeclaration(companyData.declarations);
   const flatData = getFlatData(companyData);
   const yearData = getYearData(companyData);
 

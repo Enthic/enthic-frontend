@@ -39,14 +39,12 @@ const getStatisticDataFake = (companyData) => {
     },
   };
 
-  for (var declaration of companyData.declarations) {
-    declaration.statistics = generateRandomStatistic();
-    for (var statType in declaration.statistics) {
-      console.log("+ + + CompanyStatisticsDisplay statType :", statType);
-      result[statType].values.push(
-        declaration.statistics[statType].value.toPrecision(2)
-      );
+  for (var year in companyData.declarations) {
+    var statistics = generateRandomStatistic();
+    for (var statType in statistics) {
+      result[statType].values.push(statistics[statType].value.toPrecision(2));
     }
+    companyData.declarations[year].fakestatistics = statistics;
   }
 
   return result;

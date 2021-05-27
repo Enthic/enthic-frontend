@@ -22,10 +22,10 @@
             <tr>
               <th>Indicateur</th>
               <th
-                v-for="oneYear in companyData.declarations"
-                v-bind:key="oneYear.declaration.value"
+                v-for="(yearData, yearName) in companyData.declarations"
+                v-bind:key="yearName"
               >
-                {{ oneYear.declaration.value }}
+                {{ yearName }}
               </th>
             </tr>
           </thead>
